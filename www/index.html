@@ -52,6 +52,17 @@
 
         function sortData() {
             $("#display").html("sort does not work");
+            UTdata.order("score",false).fetchAll()
+                .then(function(results) {
+                    let msg = "";
+                    for (let i = 0; i < results.length; i++) {
+                        msg += results[i].get(key) + "<br>";
+                    }
+                    $("#display").removeClass();
+                    $("#display").addClass("text-light");
+                    $("#display").addClass("bg-primary");
+                    $("#display").html(msg);
+                })
         }
 
         function countData() {
