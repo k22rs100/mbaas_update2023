@@ -67,6 +67,10 @@
 
         function countData() {
             $("#display").html("count does not work");
+            UTdata.count().fetchAll()
+            .then(function(results){
+                console.log(results.count);
+            }
         }
 
         function deleteData() {
@@ -89,6 +93,22 @@
 
         function updateData() {
             $("#display").html("update does not work");
+            UTdata.fetch()
+            .then(function(results){
+                let value = parseInt($("#update").val());
+                results.set(key, value);
+                return results.update();
+            })
+            .then(function(results){
+                $("#display").removeClass();
+                $("#display").addClass("bg-success");
+                $("#display").html("update success");
+            })
+            .catch(function(error){
+                $("#display").removeClass();
+                $("#display").addClass("bg-warning");
+                $("#display").html("update fail:" + JSON.stringify(error));
+            })
         }
     </script>
 </head>
