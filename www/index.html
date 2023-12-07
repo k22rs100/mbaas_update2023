@@ -16,7 +16,7 @@
 
         function enterData() {
             let uTdata = new UTdata();
-            let value = parseInt($("#data").val());
+            let value = ($("#data").val());
             uTdata.set(key, value)
                 .save()
                 .then(function(results) {
